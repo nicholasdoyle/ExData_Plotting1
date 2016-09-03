@@ -1,13 +1,13 @@
 data <- read.csv("household_power_consumption.txt", sep=";", header = TRUE, na.strings = "?")
-data <- data[data$Date %in% c("2/1/2007", "2/2/2007"),]
+data <- data[data$Date %in% c("1/2/2007", "2/2/2007"),]
 par(mfrow=c(2,2))
 plot(data$Global_active_power, type="l", xaxt="n", ylab="Global Active Power (kilowatts)", xlab="")
 axis(1, at=c(1, 1440, 2880), labels=c("Thurs", "Fri", "Sat"))
 plot(data$Voltage, type="l", xaxt="n", ylab="Voltage", xlab="datetime")
 axis(1, at=c(1, 1440, 2880), labels=c("Thurs", "Fri", "Sat"))
-plot(data$Sub_metering_3, type="l", xaxt="n", ylab="Energy sub metering", xlab="", col="blue", ylim=c(0,30))
+plot(data$Sub_metering_1, type="l", xaxt="n", ylab="Energy sub metering", xlab="")
 lines(data$Sub_metering_2, col="red")
-lines(data$Sub_metering_1, col="black")
+lines(data$Sub_metering_3, col="blue")
 legend("topright", legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), col=c("black", "red", "blue"), lwd=1, bty="n")
 axis(1, at=c(1, 1440, 2880), labels=c("Thurs", "Fri", "Sat"))
 plot(data$Global_reactive_power, type="l", xaxt="n", ylab="Global_reactive_power", xlab="datetime")
